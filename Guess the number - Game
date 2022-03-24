@@ -1,0 +1,44 @@
+import random
+
+number_of_tries = 0
+
+while True:
+    try:
+        top_range = int(input('Choose the highest number: '))
+        generated_number = random.randint(0,top_range)
+        break
+
+    except ValueError:
+        print ("Invalid input\n")
+
+while True:
+    
+    try:
+        guess_number = int(input(f'Pick a number from 0 to {top_range}: '))
+    except ValueError:
+        print("Invalid Input\n")
+        continue
+        
+    if generated_number == guess_number:
+        number_of_tries += 1
+        break
+    
+    elif guess_number not in range(0,top_range + 1):
+        print ('Number out of range.\n')
+        
+    elif guess_number > generated_number:
+        number_of_tries += 1
+        print ('Lower!\n')
+        
+    elif guess_number < generated_number:
+        number_of_tries += 1
+        print ('Higher!\n')
+        
+    elif number_of_tries >= 10:
+        print ('Game Over')
+        
+    else:
+        number_of_tries += 1
+
+print (f'Generated Number was {generated_number} and Guessed Number was {guess_number}')
+print (f'You tried {number_of_tries} times.') 
